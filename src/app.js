@@ -8,6 +8,7 @@ console.log(__dirname)
 console.log(path.join(__dirname, '../public'))
 
 const app = express()
+const port = process.env.PORT || 3000 //for heroku or locally then 3000 is going to be used as a port
 
 //definde paths for express config
 const publicDirectoryPath = path.join(__dirname, '../public')
@@ -118,8 +119,8 @@ app.get('*', (req, res) => {
 })
 
 
-app.listen(3000, () => { //callback that runs when the serve is running
-    console.log('Server is up on port 3000')
+app.listen(port, () => { //callback that runs when the serve is running
+    console.log('Server is up on port ' + port)
 
 })
 

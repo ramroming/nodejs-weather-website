@@ -3,6 +3,7 @@ const express = require('express')
 const hbs = require('hbs')
 const geocode = require('./utils/geocode')
 const forecast = require('./utils/forecast')
+const { isContext } = require('vm')
 
 console.log(__dirname)
 console.log(path.join(__dirname, '../public'))
@@ -77,9 +78,10 @@ app.get('/weather', (req, res) => {
                 return res.send({error})
             }
             res.send({
-                forecast: forecastData,
+                forecast: forecastData.forecastData,
                 location,
-                address: req.query.address
+                address: req.query.address,
+                iconUrl: forecastData.iconUrl
             })
 
         })

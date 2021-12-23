@@ -33,8 +33,15 @@ fetch('/weather?address='+ location).then((response) => {
         } else{
            messageOne.textContent = data.location 
            messageTwo.textContent = data.forecast
-           messageTwo.textContent != '' ? icon.style.visibility = "visible" : icon.style.visibility = 'hidden'
-           icon.src = new URL(data.iconUrl).href
+
+           
+
+           if (messageTwo.textContent != '') {
+            icon.style.visibility = "visible"
+            let iconUrl = new URL(data.iconUrl)
+            icon.src =iconUrl.href
+           }
+        
 
         }
       
